@@ -7,10 +7,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class FileLoader {
     private FileLoader() {}
+
+    public static String asString(String filename) {
+        return asStream(filename)
+                .collect(Collectors.joining("\n"));
+    }
 
     public static List<String> asList(String filename) {
         try {
